@@ -1,0 +1,30 @@
+---
+- hosts: [slave1]
+  become: true
+  tasks:
+    - name: updating repository index ("Ubuntu")
+      apt:
+        update_cache: yes
+      when: ansible_distribution == "Ubuntu"
+
+    - name: install Nginx server ("Ubuntu")
+      apt:
+        name: nginx
+        state: present
+      when: ansible_distribution == "Ubuntu"
+
+    - name: start apache2 service ("Ubuntu")
+      service:
+        name: nginx
+        state: started # restarted, ...
+        enabled: yes # start this service even when the server get reboted
+      when: ansible_distribution == "Ubuntu"
+
+    - name: copying file to slave server
+      tags: copy
+      copy:
+        src: hello.slave.html
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: 0644
