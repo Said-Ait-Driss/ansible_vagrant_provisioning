@@ -17,4 +17,5 @@
 1 - install jenkins on master server
 <br>
 2 - make a jenkins pipline to execute a ansible playbook
+<br>
 3 - deploy a code to slave servers
