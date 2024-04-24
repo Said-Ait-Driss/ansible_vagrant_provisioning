@@ -12,6 +12,7 @@
     <li>installing nginix on slave(s) server</li>
     <li>copy of slave.master.html file to nginx default served file</li>
 </ol>
+
 ## Next improvements:
 1 - install jenkins on master server
 2 - make a jenkins pipline to execute a ansible playbook
